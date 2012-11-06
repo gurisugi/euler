@@ -8,8 +8,9 @@ What is the smallest positive number that is evenly divisible by all of the numb
 
 from collections import Counter
 
-def solve(num, i, lis):
+def solve(num, i=2, lis=None):
     while i <= num:
+        if lis == None: lis = []
         if num % i == 0:
             lis.append(i)
             return solve(num/i, i, lis)
@@ -23,7 +24,7 @@ if __name__ == '__main__':
 
     for num in range(2, 21):
         tmp_cnt.clear()
-        for i in solve(num, 2, []):
+        for i in solve(num):
             tmp_cnt[i] += 1
 
         for key in tmp_cnt.keys():
